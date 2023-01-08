@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Fully animated <details> element using pure CSS only</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        font-family: "Open Sans", sans-serif;
+      }
+
+      /* The trick is to keep the <details> element in the "open" state...
+        ...and animate its max-height value by ticking a checkbox. */
+      details[open] {
+        max-width: 500px;
+        box-sizing: border-box;
+        margin-top: 5px;
+        background: white;
+        transition: max-height 400ms ease-out;
+
+        max-height: 4rem; /* Set a max-height value just enough to show the summary content */
+        overflow: hidden; /* Hide "div.content" */
+      }
+
+      summary {
+        display: block; /* This hides the summary's ::marker pseudo-element */
+      }
+
+      input {
+        display: none; /* Hide the checkbox element */
+      }
+
+      /* label element to tick the checkbox */
+      label {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding-left: 1rem;
+        background: #444;
+        color: #fff;
+        height: 4rem; /* This height value must be equal to max-height value of <details> element  */
+      }
+
+      label:hover {
+        cursor: pointer;
+      }
+
+      label::before {
+        content: "⏵";
+        font-size: 1.5rem;
+        height: 4rem;
+        display: flex;
+        align-items: center;
+        margin-right: 0.5rem;
+        transition: rotate 200ms 400ms ease-out;
+      }
+
+      /* Here you can choose two approaches to animate <details> element:
+        1) Use adjacent sibling combinator (+) wich requires an extra div as container.
+        2) Use :has pseudo-class wich doesn't require an extra div, but it might not work in Firefox.
+      */
+
+      input:checked + details,
+      details:has(input:checked) {
+        max-height: 576px; /* Set a max-height value enough to show all the content */
+        transition: max-height 400ms ease-out;
+      }
+
+      input:checked + details label::before,
+      details:has(input:checked) label::before {
+        rotate: 90deg;
+        transition: rotate 200ms ease-out;
+      }
+
+      div.content {
+        padding: 0 10px;
+        border: 2px solid #888;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- The next two "container" divs work with the adjacent sibling combinator (+) approach -->
+    <div class="container">
+      <input type="checkbox" name="detail-one" id="detail-one" />
+      <details open>
+        <summary>
+          <label for="detail-one">Click to open and close smoothly with pure CSS</label>
+        </summary>
+        <div class="content">
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi unde, ex rem voluptates autem
+            aliquid veniam quis temporibus repudiandae illo, nostrum, pariatur quae! At animi modi
+            dignissimos corrupti placeat voluptatum!
+          </p>
+          <img src="https://placebear.com/400/200" alt="" />
+          <p>
+            Facilis ducimus iure officia quos possimus quaerat iusto, quas, laboriosam sapiente autem ab
+            assumenda eligendi voluptatum nisi eius cumque, tempore reprehenderit optio placeat
+            praesentium non sint repellendus consequuntur? Nihil, soluta.
+          </p>
+        </div>
+      </details>
+    </div>
+
+    <div class="container">
+      <input type="checkbox" name="detail-two" id="detail-two" />
+      <details open>
+        <summary>
+          <label for="detail-two">This one also uses adjacent sibling combinator (+) approach</label>
+        </summary>
+        <div class="content">
+          <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi unde, ex rem voluptates autem
+            aliquid veniam quis temporibus repudiandae illo, nostrum, pariatur quae! At animi modi
+            dignissimos corrupti placeat voluptatum!
+          </p>
+          <img src="https://placebear.com/400/200" alt="" />
+          <p>
+            Facilis ducimus iure officia quos possimus quaerat iusto, quas, laboriosam sapiente autem ab
+            assumenda eligendi voluptatum nisi eius cumque, tempore reprehenderit optio placeat
+            praesentium non sint repellendus consequuntur? Nihil, soluta.
+          </p>
+        </div>
+      </details>
+    </div>
+
+    <!-- This one is animated using :has() pseudo-class approach, but it might not work in Firefox  -->
+    <details open>
+      <summary>
+        <input type="checkbox" name="detail-three" id="detail-three" />
+        <label for="detail-three">
+          <span>This one uses <b>:has</b> pseudo-class approach</span>
+        </label>
+      </summary>
+      <div class="content">
+        <p>
+          <strong>
+            :has() pseudo-class works in Firefox only if the user explicitly enable it behind the
+            <a target="_blank" href="https://caniuse.com/css-has" title="Can I use :has()">
+              layout.css.has-selector.enabled
+            </a>
+            flag! 😒
+          </strong>
+        </p>
+
+        <p>
+          <a
+            title="Browser compatibility"
+            href="https://developer.mozilla.org/en-US/docs/Web/CSS/:has#browser_compatibility"
+            >:has() pseudo-class browser compatibility</a
+          >
+        </p>
+
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Modi unde, ex rem voluptates autem
+          aliquid veniam quis temporibus repudiandae illo, nostrum, pariatur quae! At animi modi
+          dignissimos corrupti placeat voluptatum!
+        </p>
+        <img src="https://placebear.com/400/200" alt="" />
+        <p>
+          Facilis ducimus iure officia quos possimus quaerat iusto, quas, laboriosam sapiente autem ab
+          assumenda eligendi voluptatum nisi eius cumque, tempore reprehenderit optio placeat
+          praesentium non sint repellendus consequuntur? Nihil, soluta.
+        </p>
+      </div>
+    </details>
+  </body>
+</html>
