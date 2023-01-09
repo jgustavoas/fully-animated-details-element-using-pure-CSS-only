@@ -4,7 +4,7 @@ Animating the `<details>` HTML element using only pure CSS can be a challenging 
 
 This solution reproduces the example from [Chris Coyier's CSS Tricks post](https://css-tricks.com/how-to-animate-the-details-element/), but achieves the same smooth animation without using any JavaScript – only pure CSS – for both opening and closing the element.
 
-The key is to start the page with the `details` element in its open state (`<details open>`), then control its `max-height` value by checking a checkbox, and use a transition effect to animate that change.
+The key is to start the page with the `details` element in its open state (`<details open>`), then control its `max-height` value by toggling a checkbox, and use a transition effect to animate that change.
 ```
 details {
    max-height: 4rem; /* Set a max-height value just enough to show the summary */
