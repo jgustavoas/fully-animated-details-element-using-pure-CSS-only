@@ -1,3 +1,5 @@
+# How to fully animate the details HTML element with only CSS, no JavaScript
+
 _Yes, this includes animating the closing of the element too!_
 
 **[Check the final result live on CodePen](https://codepen.io/jgustavoas/pen/zYLNKbN)**
