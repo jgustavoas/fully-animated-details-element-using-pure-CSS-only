@@ -33,7 +33,7 @@ details:has(input:checked) {
     max-height: 576px; /* Set a max-height value enough to show all the content */
 }
 ```
-In the CSS, the selector `input:checked + details` selects a `<details>` element that immediately follows a checked input element. On the other hand, the selector `details:has(input:checked)` selects a `<details>` element that has a checked input element as a descendant.
+In the CSS, the selector `input:checked + details` selects a `<details>` element that immediately follows a checked input element. On the other hand, the selector `details:has(input:checked)` selects a `<details>` element that has a checked input element as its descendant.
 
 
 ## The HTML
