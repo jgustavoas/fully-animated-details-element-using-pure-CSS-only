@@ -2,7 +2,7 @@
 
 _Yes, this includes animating the closing of the element too!_
 
-**[Check the final result live on CodePen](https://codepen.io/jgustavoas/pen/zYLNKbN)**
+**[See the final result live on CodePen](https://codepen.io/jgustavoas/pen/zYLNKbN)**
 
 
 ## Introduction
@@ -15,7 +15,7 @@ This solution reproduces the example from [Chris Coyier's CSS Tricks post](https
 
 ## The CSS Solution
 The key is to start the page with the `details` element in its open state (`<details open>`), then change its `max-height` value by toggling a checkbox, and use a transition effect to animate that change.
-```
+```css
 details {
    max-height: 4rem; /* Set a max-height value just enough to show the summary */
    overflow: hidden; /* Hide the rest of the content */
@@ -27,7 +27,7 @@ To control the change of the element's `max-height` value, you will need a check
 
 1. Using the `+` adjacent sibling combinator
 2. Using the `:has()` pseudo-class
-```
+```css
 input:checked + details,
 details:has(input:checked) {
     max-height: 576px; /* Set a max-height value enough to show all the content */
@@ -41,12 +41,12 @@ The difference between the two approaches in HTML is that the checkbox input mus
 
 Inside the `<summary>` tag of the `<details>` element , place a `<label>` that toggles the checkbox:
 
-```
+```html
 <!-- approach #1 (checkbox comes immediately before the details element) -->
-<input type="checkbox" name="detail-plus" id="detail-plus" />
+<input type="checkbox" name="approach-one" id="approach-one" />
 <details open>
   <summary>
-    <label for="detail-plus">This one uses the adjacent sibling combinator (+) approach</label>
+    <label for="approach-one">This one uses the adjacent sibling combinator (+) approach</label>
   </summary>
 
   <div class="rest-of-the-content">...</div>
@@ -55,8 +55,8 @@ Inside the `<summary>` tag of the `<details>` element , place a `<label>` that t
 <!-- approach #2 (checkbox is a descendant of the details element -->
 <details open>
   <summary>
-    <input type="checkbox" name="detail-has" id="detail-has" />
-    <label for="detail-has">This one uses :has() pseudo-class approach</label>
+    <input type="checkbox" name="approach-two" id="approach-two" />
+    <label for="approach-two">This one uses :has() pseudo-class approach</label>
   </summary>
 
   <div class="rest-of-the-content">...</div>
