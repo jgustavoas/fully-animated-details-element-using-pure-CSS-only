@@ -29,6 +29,30 @@ In the CSS, the selector `input:checked + details` selects a `<details>` element
 
 The difference between the two approaches is that the checkbox input must come immediately before the `<details>` element in the first approach, and the checkbox must be a child of the `<details>` element in the second approach.
 
+Inside the `<summary>` tag of the `<details>` element , place a `<label>` that toggles the checkbox:
+
+```
+<!-- approach #1 (checkbox comes immediately before the details element) -->
+<input type="checkbox" name="detail-plus" id="detail-plus" />
+<details open>
+  <summary>
+    <label for="detail-plus">This one uses the adjacent sibling combinator (+) approach</label>
+  </summary>
+
+  <div class="rest-of-the-content">...</div>
+</details>
+
+<!-- approach #2 (checkbox is a descendant of the details element -->
+<details open>
+  <summary>
+    <input type="checkbox" name="detail-has" id="detail-has" />
+    <label for="detail-has">This one uses :has() pseudo-class approach</label>
+  </summary>
+
+  <div class="rest-of-the-content">...</div>
+</details>
+```
+
 One caveat to consider when using the `:has()` approach is that in Firefox the user must explicitly enable this feature (see [caniuse.com](https://caniuse.com/css-has) and [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/:has#browser_compatibility)).
 
 Check the final result live on CodePen: https://codepen.io/jgustavoas/pen/zYLNKbN
