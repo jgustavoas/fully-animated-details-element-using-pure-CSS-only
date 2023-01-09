@@ -1,5 +1,7 @@
 _Yes, this includes animating the closing of the element too!_
 
+**[Check the final result live on CodePen](https://codepen.io/jgustavoas/pen/zYLNKbN)**
+
 Animating the `<details>` HTML element using only pure CSS can be a challenging task, as many articles, posts, and tutorials either rely on JavaScript or offer incomplete solutions that are unable to animate the closing of the element or produce a smooth animation.
 
 However, with a bit of creativity, it is possible to create a fully-animated `<details>` element using pure CSS.
@@ -55,4 +57,3 @@ Inside the `<summary>` tag of the `<details>` element , place a `<label>` that t
 
 One caveat to consider when using the `:has()` approach is that in Firefox the user must explicitly enable this feature (see [caniuse.com](https://caniuse.com/css-has) and [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/:has#browser_compatibility)).
 
-Check the final result live on CodePen: https://codepen.io/jgustavoas/pen/zYLNKbN
