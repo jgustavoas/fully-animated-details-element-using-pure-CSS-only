@@ -25,9 +25,9 @@ details:has(input:checked) {
     max-height: 576px; /* Set a max-height value enough to show all the content */
 }
 ```
-In the CSS, the selector `input:checked + details` selects a `<details>` element that immediately follows a checked input element. On the other hand, the selector `details:has(input:checked)` selects a `<details>` element that has a checked input element as a child.
+In the CSS, the selector `input:checked + details` selects a `<details>` element that immediately follows a checked input element. On the other hand, the selector `details:has(input:checked)` selects a `<details>` element that has a checked input element as a descendant.
 
-The difference between the two approaches is that the checkbox input must come immediately before the `<details>` element in the first approach, and the checkbox must be a child of the `<details>` element in the second approach.
+The difference between the two approaches is that the checkbox input must come immediately before the `<details>` element in the first approach, and the checkbox must be a descendant of the `<details>` element in the second approach.
 
 Inside the `<summary>` tag of the `<details>` element , place a `<label>` that toggles the checkbox:
 
