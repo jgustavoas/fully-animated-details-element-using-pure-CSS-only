@@ -4,7 +4,6 @@ _Yes, this includes animating the closing of the element too!_
 
 **[See the final result live on CodePen](https://codepen.io/jgustavoas/pen/zYLNKbN)**
 
-
 ## Introduction
 Animating the `<details>` HTML element using only pure CSS can be a challenging task, as many articles, posts, and tutorials either rely on JavaScript or offer incomplete solutions that are unable to animate the closing of the element or produce a smooth animation.
 
@@ -63,6 +62,10 @@ Inside the `<summary>` tag of the `<details>` element , place a `<label>` that t
 </details>
 ```
 
-## A note about Firefox browser
+## Notes on Firefox, Safari and MacOS
 One caveat to consider when using the `:has()` approach is that in Firefox the user must explicitly enable this feature (see [caniuse.com](https://caniuse.com/css-has) and [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/:has#browser_compatibility)).
+
+Sadly this solution doesn't work in Safari. It seems to be because of poor support of that browser for the `<summary>` element and the `::marker` pseudo-element.
+
+It was also odd to note that in Firefox on MacOS this solution simply didn't work at all, unlike other OS, where only the approach with the `:has()` pseudo-class doesn't work in Firefox by default.
 
