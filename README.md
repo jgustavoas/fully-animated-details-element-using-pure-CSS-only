@@ -62,10 +62,12 @@ Inside the `<summary>` tag of the `<details>` element , place a `<label>` that t
 </details>
 ```
 
-## Notes on Firefox, Safari and MacOS
+## Notes on Firefox, Safari and macOS
 One caveat to consider when using the `:has()` approach is that in Firefox the user must explicitly enable this feature (see [caniuse.com](https://caniuse.com/css-has) and [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/CSS/:has#browser_compatibility)).
 
 Sadly this solution doesn't work in Safari. It seems to be because of poor support of that browser for the `<summary>` element and the `::marker` pseudo-element.
 
 It was also odd to note that in Firefox on MacOS this solution simply didn't work at all, unlike other OS, where only the approach with the `:has()` pseudo-class doesn't work in Firefox by default.
 
+## Update note on June 2023
+[Click here](https://github.com/jgustavoas/SOLVED-fully-animated-details-element-using-pure-CSS-only) to know a version that works in Safari and Firefox on macOS.
